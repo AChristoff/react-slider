@@ -9,7 +9,7 @@ const Slider = ({
   infiniteLoop = true,
   autoplay = true,
   autoplayInterval = 3000,
-  transitionDuration = 400
+  transitionDuration = 400,
 }) => {
   const [slideIndex, setSlideIndex] = useState(initialIndex)
 
@@ -26,7 +26,11 @@ const Slider = ({
 
   return (
     <section style={{ width: '50vh', position: 'relative' }}>
-      <Slide slides={slides} slideIndex={slideIndex} transitionDuration={transitionDuration} />
+      <Slide
+        slides={slides}
+        slideIndex={slideIndex}
+        transitionDuration={transitionDuration}
+      />
       <SliderControls
         slides={slides}
         slideIndex={slideIndex}
