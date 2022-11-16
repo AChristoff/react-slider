@@ -1,4 +1,4 @@
-const Slide = ({ slides, slideIndex }) => {
+const Slide = ({ slides, slideIndex, transitionDuration }) => {
   const slide = slides[slideIndex]
   const position = '50%'
 
@@ -14,6 +14,7 @@ const Slide = ({ slides, slideIndex }) => {
     >
       {slide?.video ? (
         <video
+          key={slideIndex}
           autoPlay
           playsInline
           muted
@@ -26,10 +27,12 @@ const Slide = ({ slides, slideIndex }) => {
             width: '100%',
             height: 'auto',
             translate: `-${position} -${position}`,
+            animation: `transition-animation ${transitionDuration}ms linear`,
           }}
         />
       ) : (
         <img
+          key={slideIndex}
           src={slide?.image}
           alt='banner'
           style={{
@@ -39,6 +42,7 @@ const Slide = ({ slides, slideIndex }) => {
             top: position,
             left: position,
             translate: `-${position} -${position}`,
+            animation: `transition-animation ${transitionDuration}ms linear`,
           }}
         />
       )}
