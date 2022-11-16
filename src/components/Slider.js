@@ -1,17 +1,18 @@
 import Slide from "./slider/Slide"
-import SliderButton from "./slider/SliderButton"
 import SliderNav from "./slider/SliderNav"
 import { slides } from "../data"
+import { useState } from "react"
+import SliderControls from "./slider/SliderControls"
 
-const Slider = () => {
+const Slider = ({initialIndex}) => {
+
+  const [slideIndex, setSlideIndex] = useState(initialIndex || 0)
   
-  console.log('slides', slides)
-
   return (
-    <section>
-      <Slide data={slides} />
-      <SliderButton/>
-      <SliderNav/>
+    <section style={{width: '50vh', position: 'relative'}}>
+      <Slide slides={slides} slideIndex={slideIndex}/>
+      <SliderControls slides={slides} setSlideIndex={setSlideIndex} />
+      <SliderNav slides={slides} slideIndex={slideIndex} setSlideIndex={setSlideIndex} />
     </section>
   )
 }
